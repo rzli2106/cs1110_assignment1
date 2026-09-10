@@ -27,6 +27,13 @@ def testA():
     introcs.assert_equals(a1.first_inside_quotes('"abc""def"'), 'abc')
     introcs.assert_equals(a1.first_inside_quotes('"asdf"'), 'asdf')
 
+    pass
+
+def testB():
+    """
+    Test procedure for Part B
+    """
+
     introcs.assert_equals(a1.get_old('{"old" "hi"}'), 'hi')
     introcs.assert_equals(a1.get_old('{"hello" "old" "hi"}'), 'hi')
     introcs.assert_equals(a1.get_old('{"hello" "hello" "old" "hi"}'), 'hi')
@@ -39,13 +46,6 @@ def testA():
 
     introcs.assert_equals(a1.has_error('{"Valid":true}'), False)
     introcs.assert_equals(a1.has_error('{"Valid":false}'), True)
-
-    pass
-
-def testB():
-    """
-    Test procedure for Part B
-    """
     pass
 
 def testC():
