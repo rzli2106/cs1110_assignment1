@@ -123,3 +123,28 @@ def has_error(json):
     Precondition: json is the response to a currency query
     """
     return json.find('"valid":false') >= 0
+
+def query_website(src, dst, amt):
+    """Returns a JSON string that is a response to a currency query.
+
+    A currency query converts amt money in currency src to the 
+    currency dst. The response should be a string of the form    
+
+    '{ "err":"", "old":"<old-amt>", "new":"<new-amt>", "valid":true }'
+
+    where the values old-amount and new-amount contain the value 
+    and name for the original and new currencies. If the query is 
+    invalid, both old-amount and new-amount will be empty, while 
+    "valid" will be followed by the value false (and "err" will have 
+    an error message).
+
+    Parameter src: the currency on hand
+    Precondition: src is a string with no spaces or non-letters
+        
+    Parameter dst: the currency to convert to
+    Precondition: dst is a string with no spaces or non-letters
+        
+    Parameter amt: amount of currency to convert
+    Precondition: amt is a float""" 
+    url = "http://cs1110.cs.cornell.edu/2026fa/a1?src=" + src + "&dst=" + dst + "&amt=" + str(amt)
+    return introcs.urlread(url)
