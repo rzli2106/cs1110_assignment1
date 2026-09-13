@@ -152,3 +152,35 @@ def query_website(src, dst, amt):
     Precondition: amt is a float""" 
     url = "http://cs1110.cs.cornell.edu/2026fa/a1?src=" + src + "&dst=" + dst + "&amt=" + str(amt)
     return introcs.urlread(url)
+
+def is_currency(code):
+    """Returns: True if code is a valid (3 letter code for a) currency
+    It returns False otherwise.
+
+    Parameter code: the currency code to verify
+    Precondition: code is a string with no spaces or non-letters."""
+    json = query_website(code, code, 1)
+    return not has_error(json)
+
+def exchange(src, dst, amt):
+    """Returns the amount of currency received in the given exchange.
+
+    In this exchange, the user is changing amt money in currency 
+    src to the currency dst. The value returned represents the 
+    amount in currency dst.
+
+    The value returned has type float.
+
+    Parameter src: the currency on hand
+    Precondition: src is a string for a valid currency code
+        
+    Parameter dst: the currency to convert to
+    Precondition: dst is a string for a valid currency code
+        
+    Parameter amt: amount of currency to convert
+    Precondition: amt is a float
+    """
+    json = query_website(src, dst, amt)
+    new = get_new(json)
+    return float(before_space(new))
+    

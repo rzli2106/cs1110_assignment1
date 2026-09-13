@@ -59,6 +59,11 @@ def testD():
     """
     Test procedure for Part D
     """
+    introcs.assert_equals(a1.is_currency('USD'), True)
+    introcs.assert_equals(a1.is_currency('XXX'), False)
+
+    introcs.assert_floats_equal(a1.exchange('USD', 'CUP', 2.5), 64.375)
+    introcs.assert_floats_equal(a1.exchange('USD', 'USD', 1.0), 1.0 )
     pass
 
 testA()
