@@ -9,6 +9,8 @@ Author: Joon Lee (jl4875) and Richard Li (rl998)
 Date: September 12, 2026
 """
 
+from unittest import result
+
 import introcs
 
 
@@ -50,10 +52,12 @@ def first_inside_quotes(s):
     Parameter s: a string to search
     Precondition: s is a string containing at least two double quotes
     """
-    first_quote = s.index('"')
-    substring = s[first_quote+1:]
-    second_quote = substring.index('"')
-    return substring[:second_quote]
+    x = s.find('"')
+    y = s.find('"', x+1)
+
+    result = s[x+1:y]
+
+    return result
 
 
 def get_old(json):
